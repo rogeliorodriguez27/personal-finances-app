@@ -1,0 +1,29 @@
+.container{
+max-width: 350px;
+
+
+}
+
+
+#cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+
+}
+
+
+button{
+margin-top: 2%;
+
+}
+h1{font-size: 1.5rem ;}
+h2{font-size: larger;}
+
+h3{
+    font-size: medium;
+    border-bottom: 1px solid rgb(155, 155, 155);
+    margin-bottom: 2%;
+
+}
