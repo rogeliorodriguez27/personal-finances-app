@@ -7,7 +7,7 @@
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
     <script src="static/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="static/js/scripts.js"></script>
+    <script type="module" src="static/js/scripts.js"></script>
     <title>Personal Finances App</title>
 </head>
 <body>
@@ -20,9 +20,7 @@
     </div>
     <div id="transactions">
         <h3>Transactions</h3>
-        <ul id="transactions-list">
-            
-        </ul>
+
         <div id="cards"> 
         <div class="card" style="width: 10rem;">
             <div class="card-body">
@@ -38,18 +36,23 @@
         </div>
           </div>
     </div>
+    <div id="transactions-list">
+            
+    </div>
     <h3>Add Transaction</h3>
-    <br>
-    <form action="#" method="post">
+    <form id="form" action="#" method="post">
         <label for="transaction-name" class="form-label" > Transaction Name</label>
             <input type="text" name="transaction-name" id="transaction-name" class="form-control">
         
-
-        <label for="value" class="form-label">Value</label>
-            <input type="number" name="value" id="value" class="form-control">
-            <div id="valueHelp" class="form-text"> To add income enter positive values, to add expenses enter negative values ​​( - at the beginning)
+            <div class="needs-validation">
+        <label for="transaction-value" class="form-label ">Value</label>
+            <input type="number" name="transaction-value" id="transaction-value" class="form-control">
+            <div class="invalid-feedback">
+                Please provide a value valid.
+              </div>
+            <div id="transaction-valueHelp" class="form-text"> To add income enter positive values, to add expenses enter negative values ​​( - at the beginning)
             </div>
-
+        </div>
         
         <div class="d-grid gap-2">
         <button type="submit" class="btn btn-success">Add</button>
