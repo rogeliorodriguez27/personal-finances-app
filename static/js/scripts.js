@@ -6,7 +6,7 @@
 //CRUD funtions
 
 
-import { saveTransaction, getDataTransactions, onGetTransactions } from "./firebase.js";
+import { saveTransaction, getDataTransactions, onGetTransactions, deleteTransaction } from "./firebase.js";
 
 const form = document.getElementById('form'),
 container = document.getElementById('transactions-list'),
@@ -47,7 +47,6 @@ onGetTransactions((querySnapshot) => {
 
         }else {
           expense += parseFloat(value)
-          console.log(expense)
  
  
          };
@@ -61,24 +60,42 @@ onGetTransactions((querySnapshot) => {
         const amountWithoutOperador = Math.abs(value)
 
         html += `
-        <div  id='${CssId}' class="card mb-3" style="max-width: 540px; ">
+        <div  id='${CssId}' class="card mb-2" style="max-width: 540px; height:100px; ">
  
-    <div >
       <div id='itemCard' class="card-body">
-        <div id='infoCard' > <h5 class="card-title">${transaction.name}</h5>
+        <div id='infoCard' > 
+        <h5 class="card-title">${transaction.name}</h5>
         <p class="card-text">${operador} $ ${amountWithoutOperador}</p>
-        </div><div id='optionsCard' >
-        <button type="button" class="btn btn-primary">✎</button>
-        <button type="button" class="btn btn-danger">⌫</button>
         </div>
+        
+        <div id='optionsCard' >
+        <button type="button" class="btn btn-primary btn-edit" data-id=${doc.id} >✎</button>
+        <button type="button" class="btn btn-danger btn-delete" data-id=${doc.id}>⌫</button>
+        </div>
+        
       </div>
-    </div>
   </div>
         
         `;
     });
 container.innerHTML = html;
 balanceValue.innerHTML = `$ ${total}`
+
+
+
+// delete
+
+const deleteBtns = container.querySelectorAll(".btn-delete")
+ deleteBtns.forEach(btn => {
+
+  btn.addEventListener('click', ({target:{dataset}}) => {
+  deleteTransaction(dataset.id)
+})
+
+
+})
+
+
 
 });
     
