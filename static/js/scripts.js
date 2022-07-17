@@ -6,13 +6,17 @@
 //CRUD funtions
 
 
-import { saveTransaction, getDataTransactions, onGetTransactions, deleteTransaction } from "./firebase.js";
+import { saveTransaction, getDataTransactions, onGetTransactions, deleteTransaction, getTransaction, updateTransaction } from "./firebase.js";
 
 const form = document.getElementById('form'),
 container = document.getElementById('transactions-list'),
 balanceValue = document.getElementById('balanceValue'),
 incomeValue = document.getElementById('incomeValue'),
 expensesValue = document.getElementById('expensesValue');
+
+let editStatus = false,
+    id ='' ;
+
 
 
 
@@ -36,6 +40,7 @@ onGetTransactions((querySnapshot) => {
         const value = parseFloat(transaction.value) ;
         const operador = value < 0 ? '-': '+';
         const CssId = value < 0 ? 'negative': 'positive';
+        const date = transaction.date ;
 
 
         expensesValue.innerHTML = `$ ${expense}` ;
@@ -60,12 +65,17 @@ onGetTransactions((querySnapshot) => {
         const amountWithoutOperador = Math.abs(value)
 
         html += `
+
+
+        
         <div  id='${CssId}' class="card mb-2" style="max-width: 540px; height:100px; ">
  
       <div id='itemCard' class="card-body">
         <div id='infoCard' > 
         <h5 class="card-title">${transaction.name}</h5>
         <p class="card-text">${operador} $ ${amountWithoutOperador}</p>
+        <p class="card-text">${date}</p>
+
         </div>
         
         <div id='optionsCard' >
@@ -95,6 +105,25 @@ const deleteBtns = container.querySelectorAll(".btn-delete")
 
 })
 
+// edit
+
+const editBtns = container.querySelectorAll(".btn-edit")
+  editBtns.forEach(btn => {
+  btn.addEventListener('click', async ({target:{dataset}}) => {
+  const doc = await getTransaction(dataset.id);
+  const transaction = doc.data();
+  form['transaction-name'].value = transaction.name;
+  form['transaction-value'].value = transaction.value;
+  editStatus = true;
+  id = doc.id
+
+
+
+});
+
+
+});
+
 
 
 });
@@ -116,9 +145,18 @@ if (transactionValue.value == 0 ) {
   transactionValue.classList.add('is-invalid')
 }else{
 
+if (editStatus) {
+  updateTransaction(id, {name:transactionName.value , value:transactionValue.value} )
+  editStatus = false;
+} else {
+  const time = Date.now();
+  const today = new Date(time);
+  let todayString = today.toDateString()
 
-
-saveTransaction(transactionName.value , transactionValue.value)
-form.reset()}
+  saveTransaction(transactionName.value , transactionValue.value, todayString)
+  
+    
+}
+form.reset();}
 })
   

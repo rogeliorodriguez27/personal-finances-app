@@ -12,12 +12,11 @@ max-width: 350px;
 
 
 #cards{
-    margin: 2px 0 2px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2%;
-
+    
 }
 
 
@@ -47,10 +46,10 @@ max-width: 350px;
 }
 
 #transactions-list{
-max-height: 200px ; 
 -ms-overflow-style: none; /* for Internet Explorer, Edge */
 scrollbar-width: none; /* for Firefox */
 overflow-y: scroll;
+margin-bottom: 5px;
 
 }
 
@@ -72,7 +71,6 @@ overflow-y: scroll;
 }
 
 button{
-margin-top: 2%;
 
 }
 h1{font-size: 1.5rem ;}

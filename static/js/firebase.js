@@ -3,7 +3,7 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
-  import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc} from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
+  import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js"
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,10 +24,18 @@
   const db = getFirestore();
 
   //save data
-  export const saveTransaction = (name, value) => addDoc(collection(db, 'transaction'),{name, value});
+
+  export const saveTransaction = (name, value, date) => addDoc(collection(db, 'transaction'),{name, value, date});
   //get data
   export const getDataTransactions = () => getDocs(collection((db),'transaction'));
   export const onGetTransactions = (callback) => onSnapshot(collection(db, 'transaction'), callback);
   
 // delete data
   export const deleteTransaction = (id) => deleteDoc(doc(db,'transaction', id));
+
+    
+// get object
+  export const getTransaction = (id) => getDoc(doc(db,'transaction', id));
+
+// update object
+  export const updateTransaction = (id, object) => updateDoc(doc(db,'transaction', id), object);
