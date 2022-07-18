@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="static/css/style.css">
     <script src="static/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="static/js/scripts.js"></script>
+    <!--searchs-->
+
 
     <!--DaterangePicker-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -22,20 +24,28 @@
     <!--current balance, income, expenses, transactions, add transaction. transaction name, value,-->
     <div class="container  mx-auto">
         <h1>Personal Finances</h1>
-    <div id="balance">
+    <div class="front">
+        <div id="balance">
         <h2>Balance</h3>
         <p id="balanceValue">0.00 $</p>
     </div>
+<div class="search">
+    <div id='searchBox' class="input-group search">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
 
-    <div class="input-group">
-      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-      <button type="button" class="btn btn-outline-primary">search</button>
+      <input  id="searchInput" class="form-control rounded"  />
     </div>
+
+
+
+    
     
     <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
       <i class="fa fa-calendar"></i>&nbsp;
       <span></span> <i class="fa fa-caret-down"></i>
   </div>
+</div>
+</div>
     <div id="transactions">
         <h3>Transactions</h3>
 
@@ -79,4 +89,6 @@
 </div>
 </div>
 </body>
+<script type="module" src="static/js/search.js"></script>
+
 </html>

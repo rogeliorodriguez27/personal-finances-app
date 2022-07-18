@@ -68,7 +68,7 @@ onGetTransactions((querySnapshot) => {
 
 
         
-        <div  id='${CssId}' class="card mb-2" style="max-width: 540px; height:100px; ">
+        <div  id='${CssId}' class="card mb-2 itemList" style="max-width: 540px; height:100px; ">
  
       <div id='itemCard' class="card-body">
         <div id='infoCard' > 

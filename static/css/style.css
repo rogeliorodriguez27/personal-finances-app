@@ -83,3 +83,14 @@ h3{
 
 }
 
+
+.search{
+width: 200px;
+font-size: 12px;
+
+}
+
+.front{
+    display: flex;
+    justify-content: space-between;
+}
