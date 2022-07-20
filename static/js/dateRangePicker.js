@@ -1,10 +1,23 @@
+export let startDateValue = new Date(moment().subtract(29, 'days'));
+export let endDateValue = new Date(moment());
 $(function() {
-
+    
+    
+    
     var start = moment().subtract(29, 'days');
     var end = moment();
+   
+  
+
 
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    startDateValue = new Date(start.format('MMMM D, YYYY'));
+    endDateValue = new Date(end);
+
+    
+
+    
     }
 
     $('#reportrange').daterangepicker({
@@ -22,4 +35,8 @@ $(function() {
 
     cb(start, end);
 
+   
+ 
+    
 });
+

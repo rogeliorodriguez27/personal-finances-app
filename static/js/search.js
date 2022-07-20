@@ -1,6 +1,9 @@
 const container = document.getElementsByClassName('itemList'),
 searchBox = document.getElementById('searchBox'),
-searchInput = document.getElementById('searchInput');
+searchInput = document.getElementById('searchInput'),
+dateButton = document.getElementById('dateButton'),
+dateRangeInput = document.getElementById('reportrange');
+import { startDateValue, endDateValue} from "./dateRangePicker.js"
 
 
 
@@ -13,8 +16,32 @@ for (let i = 0; i < container.length; i++) {
     }
     else {
         container[i].style.display="list-item";                 
+        
     }
 
 
 }
 })
+
+
+
+dateButton.addEventListener("click", () =>{    
+    for (let i = 0; i < container.length; i++) { 
+    let dateItem = new Date(container[i].querySelector('.date').innerHTML);
+
+        if (dateItem >= startDateValue && dateItem <= endDateValue ) {
+
+            container[i].style.display="list-item";
+            
+        }
+        else {
+            container[i].style.display="none";
+            console.log('no listar')
+            console.log(startDateValue, endDateValue )
+
+            
+        }
+    
+    
+    }
+    })

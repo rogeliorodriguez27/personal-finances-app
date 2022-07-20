@@ -15,7 +15,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <script type="text/javascript" src="static/js/dateRangePicker.js"></script>
+  <script type="module" src="static/js/dateRangePicker.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <title>Personal Finances App</title>
@@ -39,11 +39,17 @@
 
 
     
-    
+    <div id=dateRangePicker>
     <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
       <i class="fa fa-calendar"></i>&nbsp;
       <span></span> <i class="fa fa-caret-down"></i>
+      
   </div>
+  <button id=dateButton type="button" class="btn btn-primary"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+        &#128269
+</button>
+</div>
 </div>
 </div>
     <div id="transactions">

@@ -67,24 +67,16 @@ onGetTransactions((querySnapshot) => {
         html += `
 
 
-        
-        <div  id='${CssId}' class="card mb-2 itemList" style="max-width: 540px; height:100px; ">
- 
-      <div id='itemCard' class="card-body">
-        <div id='infoCard' > 
-        <h5 class="card-title">${transaction.name}</h5>
-        <p class="card-text">${operador} $ ${amountWithoutOperador}</p>
-        <p class="card-text">${date}</p>
 
-        </div>
-        
-        <div id='optionsCard' >
-        <button type="button" class="btn btn-primary btn-edit" data-id=${doc.id} >✎</button>
-        <button type="button" class="btn btn-danger btn-delete" data-id=${doc.id}>⌫</button>
-        </div>
-        
-      </div>
-  </div>
+
+  <div class="card text-center" id='${CssId}'>
+  <div class="card-body">
+    <h5 class="card-title">${transaction.name}</h5>
+    <p class="card-text">${operador} $ ${amountWithoutOperador}</p>
+    <button type="button" class="btn btn-primary btn-edit" data-id=${doc.id} >✎</button>
+    <button type="button" class="btn btn-danger btn-delete" data-id=${doc.id}>⌫</button>  </div>
+  <div class="card-footer text-muted">${date}</div>
+</div>
         
         `;
     });
@@ -151,7 +143,7 @@ if (editStatus) {
 } else {
   const time = Date.now();
   const today = new Date(time);
-  let todayString = today.toDateString()
+  let todayString = today.toLocaleDateString("en-US")
 
   saveTransaction(transactionName.value , transactionValue.value, todayString)
   

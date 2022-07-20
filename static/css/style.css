@@ -50,6 +50,7 @@ max-width: 350px;
 scrollbar-width: none; /* for Firefox */
 overflow-y: scroll;
 margin-bottom: 5px;
+height: 220px;
 
 }
 
@@ -85,7 +86,7 @@ h3{
 
 
 .search{
-width: 200px;
+width: 210px;
 font-size: 12px;
 
 }
@@ -93,4 +94,16 @@ font-size: 12px;
 .front{
     display: flex;
     justify-content: space-between;
+}
+
+
+#dateRangePicker{
+    display: flex;
+    
+    }
+
+
+#reportrange{
+max-width: 190px;
+
 }
